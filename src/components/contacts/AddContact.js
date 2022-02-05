@@ -5,31 +5,29 @@ import { withRouter } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 
 const AddContact = () => {
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [phone, setPhone] = useState("")
-    const [errors, setErrors] = useState({})
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [errors, setErrors] = useState({ nameErr: '', emailErr: '', phoneErr: '' })
 
-    const onSubmit = async (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
 
         //Check For Errors
         if(name === ''){
             setErrors({...errors, nameErr: 'Name is required'});
-            // return;
+            return;
         }
 
         if(email === ''){
             setErrors({...errors, emailErr: 'Email is required'});
-            // return;
+            return;
         }
 
         if(phone === ''){
             setErrors({...errors, phoneErr: 'Phone is required'});
-            // return;
+            return;
         }
-
-        return
 
         // const newContact = {
         //     name,
@@ -62,7 +60,7 @@ const AddContact = () => {
                     placeholder="Enter Name..."
                     value={name}
                     onChange={e => setName(e.target.value)}
-                    error={errors.nameErr !== '' ? errors.nameErr : null}
+                    error={name === '' && errors.nameErr}
                 />
 
                 <TextInputGroup
@@ -72,7 +70,7 @@ const AddContact = () => {
                     placeholder="Enter Email..."
                     value={email}
                     onChange={e => setEmail(e.target.value)}
-                    error={errors.emailErr !== '' ? errors.emailErr : null}
+                    error={email === '' && errors.emailErr}
                 />
 
                 <TextInputGroup
@@ -81,7 +79,7 @@ const AddContact = () => {
                     placeholder="Enter Phone..."
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
-                    error={errors.phoneErr !== '' ? errors.phoneErr : null}
+                    error={phone === '' && errors.phoneErr}
                 />
 
                 <input type="submit" value="Add Contact" className='btn btn-block btn-light' />
