@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 // import axios from 'axios';
 import { useState } from 'react/cjs/react.development';
 
-const AddContact = () => {
+const AddContact = ({ history }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
@@ -36,6 +36,7 @@ const AddContact = () => {
         // }
         // const res = await axios.post('https://jsonplaceholder.typicode.com/users', newContact)
         // dispatch({ type: 'ADD_CONTACT', payload: res.data })
+        //https://jsonplaceholder.typicode.com/users
 
         //clear State
         
@@ -44,7 +45,7 @@ const AddContact = () => {
         setPhone("")
         setErrors({ nameErr: '', emailErr: '', phoneErr: '' })
         
-        // this.props.history.push('/');
+        history.push('/');
     }
 
     // onChange = (e) => this.setState({ [e.target.name]: e.target.value })

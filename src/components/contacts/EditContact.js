@@ -3,7 +3,7 @@ import TextInputGroup from '../layout/TextInputGroup';
 import { withRouter } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 
-const EditContact = () => {
+const EditContact = ({history}) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
@@ -56,7 +56,7 @@ const EditContact = () => {
         setPhone("")
         setErrors({ nameErr: '', emailErr: '', phoneErr: '' })
         
-        // this.props.history.push('/');
+        history.push('/');
     }
 
 
